@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte Produit - BMW</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      padding: 15px;
+      max-width: 300px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .card .details {
+      margin-top: 10px;
+    }
+
+    .card .details p {
+      margin: 5px 0;
+    }
+
+    .details .caractéristiques {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .compact .details {
+      display: none;
+    }
+
+    .photos img {
+      width: 40px;
+      margin-right: 10px;
+    }
+
+    .photos {
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Carte compacte -->
+  <div class="card compact">
+    <img src="https://example.com/photo1.jpg" alt="BMW">
+    <div class="details">
+     
+      <p><strong>Marque:</strong> BMW M2</p>
+      <p><strong>Prix:</strong> 9799,99 €</p>
+      <p><strong>Disponible:</strong> Oui</p>
+    </div>
+  </div>
+
+  <!-- Carte dépliée -->
+  <div class="card dépliée">
+    <img src="https://example.com/photo1.jpg" alt="Smartphone">
+    <div class="details">
+      
+      <p><strong>Marque:</strong> BMW M2</p>
+      <p><strong>Couleur:</strong> Noir</p>
+      <p><strong>Année de sortie:</strong> 2023</p>
+      <p><strong>Prix:</strong> 9799,99 €</p>
+      <p><strong>Disponible:</strong> Oui</p>
+
+      <div class="caractéristiques">
+        <p><strong>KM:</strong> 1500km</p>
+        <p><strong>TYPE:</strong> Manuelle</p>
+        <p><strong>Fuel:</strong> Essence</p>
+      </div>
+
+      <div class="photos">
+        <strong>Photos:</strong>
+        <img src="https://example.com/photo1.jpg" alt="Photo 1">
+        <img src="https://example.com/photo2.jpg" alt="Photo 2">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Exemple d'objet JSON représentant un produit
+    const BMW = {
+      nom: "M2",
+      marque: "BMW",
+      couleur: "Noir",
+      année_de_sortie: 2023,
+      prix: 9799.99,
+      disponible: true,
+      photos: [
+        "https://sf1.sportauto.fr/wp-content/uploads/sportauto/2024/11/bmw-m2-r44-performance.png",
+        "https://i.ytimg.com/vi/ScJLdyy-V_0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD4sSegODy-m5ppzNcA8CrBLpbpYQ"
+      ],
+      caractéristiques: {
+        KM: "1500KM",
+        
+        batterie: "4500 mAh"
+      }
+    };
+
+    // Remplir les cartes avec les données de l'objet
+    document.querySelector('.compact img').src = BMW[0];
+    document.querySelector('.compact .details').innerHTML = `
+      <p><strong>Nom:</strong> ${BMW.nom}</p>
+      <p><strong>Marque:</strong> ${BMW.marque}</p>
+      <p><strong>Prix:</strong> ${BMW.prix} €</p>
+      <p><strong>Disponible:</strong> ${BMW.disponible ? 'Oui' : 'Non'}</p>
+    `;
+
+    document.querySelector('.dépliée img').src = BMW.photos[0];
+    document.querySelector('.dépliée .details').innerHTML = `
+      <p><strong>Nom:</strong> ${BMW.nom}</p>
+      <p><strong>Marque:</strong> ${BMW.marque}</p>
+      <p><strong>Couleur:</strong> ${BMW.couleur}</p>
+      <p><strong>Année de sortie:</strong> ${BMW.année_de_sortie}</p>
+      <p><strong>Prix:</strong> ${BMW.prix} €</p>
+      <p><strong>Disponible:</strong> ${BMW.disponible ? 'Oui' : 'Non'}</p>
+      <div class="caractéristiques">
+        <p><strong>Écran:</strong> ${BMW.caractéristiques.écran}</p>
+        <p><strong>Mémoire:</strong> ${BMW.caractéristiques.mémoire}</p>
+        <p><strong>Batterie:</strong> ${BMW.caractéristiques.batterie}</p>
+      </div>
+      <div class="photos">
+        <strong>Photos:</strong>
+        <img src="https://sf1.sportauto.fr/wp-content/uploads/sportauto/2024/11/bmw-m2-r44-performance.png" alt="Photo 1">
+        <img src="https://i.ytimg.com/vi/ScJLdyy-V_0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLD4sSegODy-m5ppzNcA8CrBLpbpYQ" alt="Photo 2">
+      </div>
+    `;
+  </script>
+
+</body>
+</html>
